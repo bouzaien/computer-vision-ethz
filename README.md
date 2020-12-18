@@ -10,3 +10,4 @@ My suggested solutions for the [Computer Vision Course](http://www.cvg.ethz.ch/t
 #### Lab 07 - Structure from Motion
 #### Lab 08 - Shape Context
 #### Lab 09 - Condensation Tracker
+#### Lab 10 - Image Categorization
