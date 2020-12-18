@@ -1,5 +1,5 @@
 # Computer Vision Labs @ ETHZ
-My proposed solutions for the [Computer Vision Course](http://www.cvg.ethz.ch/teaching/compvis/index.php) labs.
+My suggested solutions for the [Computer Vision Course](http://www.cvg.ethz.ch/teaching/compvis/index.php) labs.
 
 #### Lab 01 - Camera Calibration
 #### Lab 02 - Local Features
