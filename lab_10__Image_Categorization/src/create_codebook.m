@@ -14,7 +14,7 @@ function vCenters = create_codebook(nameDirPos,nameDirNeg,k)
   border = 8;
   
   % Extract features for all images
-  for i=1:nImgs,
+  for i=1:nImgs
     
     disp(strcat('  Processing image ', num2str(i),'...'));
     
@@ -26,12 +26,13 @@ function vCenters = create_codebook(nameDirPos,nameDirNeg,k)
     % ...
     % create hog descriptors and patches
     % ...	
-
-
-
+    vPoints = grid_points(img,nPointsX,nPointsY,border);
+    [descriptors,patches] = descriptors_hog(img,vPoints,cellWidth,cellHeight);
+    vFeatures = [vFeatures; descriptors];
+    vPatches = [vPatches; patches];
     
-    
-  end;
+  end
+  
   disp(strcat('    Number of extracted features:',num2str(size(vFeatures,1))));
 
   % Cluster the features using K-Means

@@ -16,9 +16,26 @@ function [descriptors,patches] = descriptors_hog(img,vPoints,cellWidth,cellHeigh
     [grad_x,grad_y] = gradient(img);    
     Gdir = (atan2(grad_y, grad_x)); 
     
-    for i = [1:size(vPoints,1)] % for all local feature points
-        ...
-        ...
+    for i = 1:size(vPoints,1) % for all local feature points
+        g_point = vPoints(i,:);
+        local_patch = img(g_point(1)-pw/2:g_point(1)+pw/2-1,...
+            g_point(2)-ph/2:g_point(2)+ph/2-1);
+        patches(i,:) = reshape(local_patch,1,pw*ph);
+        
+        local_grad = Gdir(g_point(1)-pw/2:g_point(1)+pw/2-1,...
+            g_point(2)-ph/2:g_point(2)+ph/2-1);
+        
+        temp_h = [];
+        
+        for cw=1:nCellsW
+            for ch=1:nCellsH
+                c = local_grad((cw-1)*w+1:cw*w,(ch-1)*h+1:ch*h);
+                temp_h = [temp_h,histcounts(c,nBins,'BinLimits',[-pi,pi])];
+            end
+        end
+        
+        descriptors(i,:) = temp_h;
+        
     end % for all local feature points
     
 end
